@@ -49,15 +49,15 @@ public:
     // }
 
     void render() {
-    string frame = "\033[H"; 
-    for (int i = 0; i < ySize; i++) {
-        for (int j = 0; j < xSize; j++) {
-            frame += window[i][j]; 
+        string frame = "\033[H"; 
+        for (int i = 0; i < ySize; i++) {
+            for (int j = 0; j < xSize; j++) {
+                frame += window[i][j]; 
+            }
+            frame += '\n';
         }
-        frame += '\n';
+        cout << frame << flush;
     }
-    cout << frame << flush;
-}
 };
 
 class Point{
@@ -201,7 +201,7 @@ public:
         float maxY = max(Ay, max(By, Cy));
 
          if (maxX > renderSizeX) {
-            float offset = maxX - 80;
+            float offset = maxX - renderSizeX;
             Ax -= offset; Bx -= offset; Cx -= offset;
             speedX = -abs(speedX);
         } 
@@ -212,7 +212,7 @@ public:
         }
 
         if (maxY > renderSizeY) {
-            float offset = maxY - 24;
+            float offset = maxY - renderSizeY;
             Ay -= offset; By -= offset; Cy -= offset;
             speedY = -abs(speedY);
         } 
