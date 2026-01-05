@@ -37,16 +37,27 @@ public:
         }
     }
 
-    void render(){
-        //system("clear");
-        cout << "\033[H\033[2J"; 
-        for (int i = 0; i < ySize; i++) {
-            for (int j = 0; j < xSize; j++) {
-                cout << window[i][j];
-            }
-            cout << "\n";
+    // void render(){
+    //     //system("clear");
+    //     cout << "\033[H\033[2J"; 
+    //     for (int i = 0; i < ySize; i++) {
+    //         for (int j = 0; j < xSize; j++) {
+    //             cout << window[i][j];
+    //         }
+    //         cout << "\n";
+    //     }
+    // }
+
+    void render() {
+    string frame = "\033[H"; 
+    for (int i = 0; i < ySize; i++) {
+        for (int j = 0; j < xSize; j++) {
+            frame += window[i][j]; 
         }
+        frame += '\n';
     }
+    cout << frame << flush;
+}
 };
 
 class Point{
