@@ -7,10 +7,13 @@
 
 using namespace std;
 
+const int renderSizeX = 80;
+const int renderSizeY = 24;
+
 class Canvas{
 private:
-    static const int xSize = 80;
-    static const int ySize = 24;
+    static const int xSize = renderSizeX;
+    static const int ySize = renderSizeY;
     char window[ySize][xSize];
 public:
     void init(){
@@ -41,7 +44,7 @@ public:
             for (int j = 0; j < xSize; j++) {
                 cout << window[i][j];
             }
-            cout << endl;
+            cout << "\n";
         }
     }
 };
@@ -69,14 +72,14 @@ public:
     }
 
     void colis(){
-        if(posX > 80){
+        if(posX > renderSizeX){
             speedX = -abs(speedX);
         }
         if(posX < 0){
             speedX = abs(speedX);
         }
 
-        if(posY > 24){
+        if(posY > renderSizeY){
             speedY = -abs(speedY);
         }
         if(posY < 0){
@@ -186,7 +189,7 @@ public:
         float minY = min(Ay, min(By, Cy));
         float maxY = max(Ay, max(By, Cy));
 
-         if (maxX > 80) {
+         if (maxX > renderSizeX) {
             float offset = maxX - 80;
             Ax -= offset; Bx -= offset; Cx -= offset;
             speedX = -abs(speedX);
@@ -197,7 +200,7 @@ public:
             speedX = abs(speedX);
         }
 
-        if (maxY > 24) {
+        if (maxY > renderSizeY) {
             float offset = maxY - 24;
             Ay -= offset; By -= offset; Cy -= offset;
             speedY = -abs(speedY);
